@@ -19,15 +19,16 @@ def convertToBits(number):
 #1 Gigabyte = 1,073,741,824 Bytes
 
     if number > 1024*1024*1024:
-        number = number/(1024*1024*)*8
+        number = number/(1024*1024*1024)*8
         number = str(number) + 'Gigabytes'
     elif number > 1024*1024:
         number = number/(1024*1024)*8
         number = str(number) + 'Megabytes'
-    elif number = 1024:
+    elif number > 1024:
         number = number/1024*8
         number = str(number) + 'Kilobytes'
-    else number = str(number) + 'Bytes'
+    else:
+        number = str(number) + 'Bytes'
 
 def printStat(val):
     print(convertToBits(val))
