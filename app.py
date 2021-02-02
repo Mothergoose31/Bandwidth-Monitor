@@ -10,8 +10,21 @@ Config.set('graphics', 'width', '400')
 Config.set('graphics', 'height', '200')
 Config.set('graphics', 'resizable', False)
 
-class InformationLabel(label):
+class InformationLabel(Label):
     def update(self,*args):
         self.text = monitor.Bandwidth()
+
+class BandwidthApp(App):
+    def __init__(self,**kwargs):
+        self.title = "Bandwidth monitor"
+        return super().__init__(**kwargs)
+    def build(self):
+        layout = BoxLayout(orientation = 'vertical')
+        informationLabel = InformationLabel()
+        Clock.schedule_interval(informationLabel.update,1)
+        layout.add_widget(informationLabel)
+        return layout
+
+BandwidthApp().run()
         
 
